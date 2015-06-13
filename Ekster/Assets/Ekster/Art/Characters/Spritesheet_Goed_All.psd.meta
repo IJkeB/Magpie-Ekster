@@ -1,0 +1,858 @@
+fileFormatVersion: 2
+guid: d3b4225d7c0ba104695225dbb577748f
+timeCreated: 1434200557
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Ekster_Idle_01
+    21300002: Ekster_Idle_02
+    21300004: Ekster_Idle_03
+    21300006: Ekster_Idle_04
+    21300008: Ekster_Idle_05
+    21300010: Ekster_Idle_06
+    21300012: Ekster_Idle_07
+    21300014: Ekster_Idle_08
+    21300016: Ekster_Idle_09
+    21300018: Ekster_Idle_10
+    21300020: Ekster_Idle_11
+    21300022: Ekster_Idle_12
+    21300024: Ekster_Talk_01
+    21300026: Ekster_Talk_02
+    21300028: Ekster_Talk_03
+    21300030: Ekster_Talk_04
+    21300032: Ekster_Talk_05
+    21300034: Ekster_Talk_06
+    21300036: Ekster_Talk_07
+    21300038: Ekster_Talk_08
+    21300040: Ekster_Walk_01
+    21300042: Ekster_Walk_02
+    21300044: Ekster_Walk_03
+    21300046: Ekster_Walk_04
+    21300048: Ekster_Walk_05
+    21300050: Ekster_Walk_06
+    21300052: Ekster_Walk_07
+    21300054: Ekster_Walk_08
+    21300056: Ekster_Walk_09
+    21300058: Ekster_Walk_10
+    21300060: Ekster_Walk_11
+    21300062: Ekster_Walk_12
+    21300064: Ekster_Walk_13
+    21300066: Ekster_Walk_14
+    21300068: Ekster_Walk_15
+    21300070: Ekster_Walk_16
+    21300072: Kraai_Idle_01
+    21300074: Kraai_Idle_02
+    21300076: Kraai_Idle_03
+    21300078: Kraai_Idle_04
+    21300080: Kraai_Idle_05
+    21300082: Kraai_Idle_06
+    21300084: Kraai_Idle_07
+    21300086: Kraai_Idle_08
+    21300088: Kraai_Idle_09
+    21300090: Kraai_Idle_10
+    21300092: Kraai_Talk_01
+    21300094: Kraai_Talk_02
+    21300096: Kraai_Talk_03
+    21300098: Kraai_Talk_04
+    21300100: Kraai_Talk_05
+    21300102: Kraai_Talk_06
+    21300104: Kraai_Talk_07
+    21300106: Kraai_Talk_08
+    21300108: Kraai_Walk_01
+    21300110: Kraai_Walk_02
+    21300112: Kraai_Walk_03
+    21300114: Kraai_Walk_04
+    21300116: Kraai_Walk_05
+    21300118: FatTony_Idle_01
+    21300120: FatTony_Idle_02
+    21300122: FatTony_Idle_03
+    21300124: FatTony_Idle_04
+    21300126: FatTony_Idle_05
+    21300128: FatTony_Idle_06
+    21300130: FatTony_Talk_01
+    21300132: FatTony_Talk_02
+    21300134: FatTony_Talk_03
+    21300136: FatTony_Talk_04
+    21300138: FatTony_Talk_05
+    21300140: FatTony_Talk_06
+    21300142: FatTony_Talk_07
+    21300144: FatTony_Talk_08
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Ekster_Idle_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4708
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ekster_Idle_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 4708
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ekster_Idle_03
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 4708
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ekster_Idle_04
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 4708
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ekster_Idle_05
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 4708
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ekster_Idle_06
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 4708
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ekster_Idle_07
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 4708
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ekster_Idle_08
+      rect:
+        serializedVersion: 2
+        x: 3584
+        y: 4708
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ekster_Idle_09
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 4708
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ekster_Idle_10
+      rect:
+        serializedVersion: 2
+        x: 4608
+        y: 4708
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ekster_Idle_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4196
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ekster_Idle_12
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 4196
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ekster_Talk_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3684
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ekster_Talk_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 3684
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ekster_Talk_03
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 3684
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ekster_Talk_04
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 3684
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ekster_Talk_05
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 3684
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ekster_Talk_06
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 3684
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ekster_Talk_07
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 3684
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ekster_Talk_08
+      rect:
+        serializedVersion: 2
+        x: 3584
+        y: 3684
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ekster_Walk_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3172
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ekster_Walk_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 3172
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ekster_Walk_03
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 3172
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ekster_Walk_04
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 3172
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ekster_Walk_05
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 3172
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ekster_Walk_06
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 3172
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ekster_Walk_07
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 3172
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ekster_Walk_08
+      rect:
+        serializedVersion: 2
+        x: 3584
+        y: 3172
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ekster_Walk_09
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 3172
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ekster_Walk_10
+      rect:
+        serializedVersion: 2
+        x: 4608
+        y: 3172
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ekster_Walk_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2660
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ekster_Walk_12
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 2660
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ekster_Walk_13
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 2660
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ekster_Walk_14
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 2660
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ekster_Walk_15
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 2660
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ekster_Walk_16
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 2660
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Kraai_Idle_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2148
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Kraai_Idle_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 2148
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Kraai_Idle_03
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 2148
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Kraai_Idle_04
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 2148
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Kraai_Idle_05
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 2148
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Kraai_Idle_06
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 2148
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Kraai_Idle_07
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 2148
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Kraai_Idle_08
+      rect:
+        serializedVersion: 2
+        x: 3584
+        y: 2148
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Kraai_Idle_09
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 2148
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Kraai_Idle_10
+      rect:
+        serializedVersion: 2
+        x: 4608
+        y: 2148
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Kraai_Talk_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1636
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Kraai_Talk_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1636
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Kraai_Talk_03
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1636
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Kraai_Talk_04
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1636
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Kraai_Talk_05
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 1636
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Kraai_Talk_06
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 1636
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Kraai_Talk_07
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 1636
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Kraai_Talk_08
+      rect:
+        serializedVersion: 2
+        x: 3584
+        y: 1636
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Kraai_Walk_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1124
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Kraai_Walk_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1124
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Kraai_Walk_03
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1124
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Kraai_Walk_04
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1124
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Kraai_Walk_05
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 1124
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: FatTony_Idle_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 612
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: FatTony_Idle_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 612
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: FatTony_Idle_03
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 612
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: FatTony_Idle_04
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 612
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: FatTony_Idle_05
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 612
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: FatTony_Idle_06
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 612
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: FatTony_Talk_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 100
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: FatTony_Talk_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 100
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: FatTony_Talk_03
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 100
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: FatTony_Talk_04
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 100
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: FatTony_Talk_05
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 100
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: FatTony_Talk_06
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 100
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: FatTony_Talk_07
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 100
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: FatTony_Talk_08
+      rect:
+        serializedVersion: 2
+        x: 3584
+        y: 100
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
