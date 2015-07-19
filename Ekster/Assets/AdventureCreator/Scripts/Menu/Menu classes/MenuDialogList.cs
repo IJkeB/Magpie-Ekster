@@ -403,6 +403,7 @@ namespace AC
 			{
 				return;
 			}
+			base.ProcessClick (_menu, _slot, _mouseState);
 
 			if (KickStarter.playerInput && KickStarter.playerInput.activeConversation)
 			{

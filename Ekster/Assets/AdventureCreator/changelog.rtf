@@ -4,7 +4,50 @@
 \paperw11900\paperh16840\margl1440\margr1440\vieww20440\viewh15160\viewkind0
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\f0\fs24 \cf0 Version 1.46:\
+\f0\fs24 \cf0 Version 1.46g:\
+\
+-Added: \'93MainCameraVR\'94 prefab in Assets/AdventureCreator/Prefabs/Camera - replace this with the standard MainCamera in your scene to allow VR compatibilty (Unity 5 only)\
+-Changed: The MainCamera prefab has been reverted to it\'92s pre-v1.46e state - the Camera component is no longer a child of the MainCamera script\
+-Fixed: Errors when changing scenes in Unity 5.1.1 on Windows platforms\
+-Fixed: Minor cursor display issues\
+\
+\
+Version 1.46f:\
+\
+-Changed: When creating a new scene, the MainCamera\'92s Camera component will now be a child object\
+-Fixed: Rare issues when running a scene created with v1.46e\
+\
+\
+Version 1.46e:\
+\
+-Added: When the Scene Manager creates a new MainCamera, it will make one that is VR-compatible (Unity 5 only)\
+-Added: Action: Comment headers can now display more text\
+-Added: Buttons beside \'93Cutscene on reach\'94 fields in Path Inspector to quickly create and assign Cutscenes\
+-Added: \'93Sound: Play one-shot\'94 Action - use to play a SFX audio clip once without the need for a Sound object\
+-Fixed: Draggable objects no longer working with UFPS characters\
+-Fixed: Character talking bools no longer being set correctly for Sprites Unity Complex animation\
+-Fixed: Interaction and Inventory cursors not showing if main cursor is not set to always display\
+-Fixed: Hotspots not being interactive when auto-positioned over a mesh with no scale\
+-Fixed: Not being able to overwrite a saved game if the save file limit has been reached\
+-Fixed: Unity UI-based Inventory menus showing empty slots\
+-Fixed: Click sounds not playing for Unity UI-based Menus\
+-Fixed: Warning messages when working in Unity 5.1.1\
+\
+\
+Version 1.46d:\
+\
+-Added: Cutscene, Trigger, DialogOptions and Interaction scene objects can now be safely duplicated\
+-Added: Warning message to ActionList Editor window if it is used to view a prefabbed scene-based ActionList\
+-Added: ActionList: Comment Action - use to display comments in ActionLists and the Console\
+-Added: Option to trigger Interaction icons by releasing a mouse-click over them (Choose Hotspot Then Interaction mode only)\
+-Fixed: Hotspots no longer responding to TurnOn and TurnOff messages sent by the \'93Object: Send message\'94 Action\
+-Fixed: Issues with using looped Curved Tracks\
+-Fixed: Per-character text scroll sound field not having a label\
+-Fixed: Interaction menus not always closing when relying on Touch Screen input\
+-Fixed: Physics Demo not working with Touch Screen input\
+\
+\
+Version 1.46:\
 \
 = Upgrade notes =\
 -Options data has been reset\

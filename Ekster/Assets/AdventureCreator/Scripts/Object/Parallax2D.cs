@@ -51,7 +51,7 @@ namespace AC
 		{
 			if (isUnity2D && KickStarter.mainCamera != null && KickStarter.mainCamera.attachedCamera != null && KickStarter.mainCamera.attachedCamera.GetComponent <Camera>().orthographic)
 			{
-				perspectiveOffset = new Vector2 (KickStarter.mainCamera.transform.position.x, KickStarter.mainCamera.transform.position.y);
+				perspectiveOffset = new Vector2 (Camera.main.transform.position.x, Camera.main.transform.position.y);
 			}
 			else
 			{

@@ -77,8 +77,8 @@ namespace AC
 					{
 						if (_target.commandSource == ActionListSource.InScene)
 						{
-							_target.nodeCommands[i].cutscene = (Cutscene) EditorGUILayout.ObjectField ("Cutscene on reach:", _target.nodeCommands[i].cutscene, typeof (Cutscene), true);
-
+							_target.nodeCommands[i].cutscene = ActionListAssetMenu.CutsceneGUI ("Cutscene on reach:", _target.nodeCommands[i].cutscene);
+							
 							if (_target.nodeCommands[i].cutscene != null && _target.nodeCommands[i].cutscene.useParameters)
 							{
 								_target.nodeCommands[i].parameterID = SetParametersGUI (_target.nodeCommands[i].cutscene.parameters, _target.nodeCommands[i].parameterID);
@@ -86,8 +86,8 @@ namespace AC
 						}
 						else
 						{
-							_target.nodeCommands[i].actionListAsset = (ActionListAsset) EditorGUILayout.ObjectField ("ActionList asset on reach:", _target.nodeCommands[i].actionListAsset, typeof (ActionListAsset), false);
-
+							_target.nodeCommands[i].actionListAsset = ActionListAssetMenu.AssetGUI ("ActionList on reach:", _target.nodeCommands[i].actionListAsset);
+						
 							if (_target.nodeCommands[i].actionListAsset != null && _target.nodeCommands[i].actionListAsset.useParameters)
 							{
 								_target.nodeCommands[i].parameterID = SetParametersGUI (_target.nodeCommands[i].actionListAsset.parameters, _target.nodeCommands[i].parameterID);

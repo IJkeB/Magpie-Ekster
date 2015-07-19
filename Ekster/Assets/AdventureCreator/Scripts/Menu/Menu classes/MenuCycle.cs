@@ -272,6 +272,8 @@ namespace AC
 				return;
 			}
 
+			base.ProcessClick (_menu, _slot, _mouseState);
+
 			selected ++;
 			if (selected > optionsArray.Count-1)
 			{
@@ -299,7 +301,7 @@ namespace AC
 					}
 				}
 			}
-			
+
 			if (cycleType == AC_CycleType.CustomScript)
 			{
 				MenuSystem.OnElementClick (_menu, this, _slot, (int) _mouseState);

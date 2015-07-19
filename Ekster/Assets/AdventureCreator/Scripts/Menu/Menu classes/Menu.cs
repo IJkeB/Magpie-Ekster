@@ -1680,6 +1680,16 @@ namespace AC
 			{
 				if (menuElement == _element)
 				{
+					if (IsUnityUI ())
+					{
+						Vector3 _position = menuElement.GetRectTransform (slot).position;
+						if (canvas.renderMode != RenderMode.WorldSpace)
+						{
+							return new Vector2 (_position.x, Screen.height - _position.y);
+						}
+						return Camera.main.WorldToScreenPoint (_position);
+					}
+
 					Rect slotRect = _element.GetSlotRectRelative (slot);
 					return new Vector2 (GetRect ().x + slotRect.x + (slotRect.width / 2f), GetRect ().y + slotRect.y + (slotRect.height / 2f));
 				}

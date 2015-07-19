@@ -14,14 +14,20 @@ using System.Collections;
 
 namespace AC
 {
-
+	
+	[RequireComponent (typeof (Camera))]
 	public class BackgroundCamera : MonoBehaviour
 	{
-
+		
+		private Camera _camera;
+		
+		
 		private void Awake ()
 		{
+			_camera = GetComponent <Camera>();
+			
 			UpdateRect ();
-
+			
 			if (KickStarter.settingsManager)
 			{
 				if (LayerMask.NameToLayer (KickStarter.settingsManager.backgroundImageLayer) == -1)
@@ -38,16 +44,17 @@ namespace AC
 				Debug.LogWarning ("A Settings Manager is required for this camera type");
 			}
 		}
-
-
+		
+		
 		public void UpdateRect ()
 		{
-			if (KickStarter.mainCamera)
+			if (_camera == null)
 			{
-				GetComponent <Camera>().rect = KickStarter.mainCamera.GetComponent <Camera>().rect;
+				_camera = GetComponent <Camera>();
 			}
+			_camera.rect = Camera.main.rect;
 		}
 		
 	}
-
+	
 }

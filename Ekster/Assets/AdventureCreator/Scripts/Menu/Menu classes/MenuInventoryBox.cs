@@ -458,14 +458,7 @@ namespace AC
 			{
 				if (!Application.isPlaying)
 				{
-					if (numSlots < 0)
-					{
-						numSlots = 0;
-					}
-					if (numSlots > maxSlots)
-					{
-						numSlots = maxSlots;
-					}
+					numSlots = Mathf.Clamp (numSlots, 0, maxSlots);
 				}
 				else
 				{
@@ -475,6 +468,14 @@ namespace AC
 			else
 			{
 				numSlots = maxSlots;
+				if (source != MenuSource.AdventureCreator)
+				{
+					if (numSlots > items.Count)
+					{
+						offset = 0;
+						numSlots = items.Count;
+					}
+				}
 				LimitOffset (items.Count);
 			}
 
@@ -796,6 +797,7 @@ namespace AC
 				return;
 			}
 
+			base.ProcessClick (_menu, _slot, _mouseState);
 			if (inventoryBoxType == AC_InventoryBoxType.CustomScript)
 			{
 				MenuSystem.OnElementClick (_menu, this, _slot, (int) _mouseState);

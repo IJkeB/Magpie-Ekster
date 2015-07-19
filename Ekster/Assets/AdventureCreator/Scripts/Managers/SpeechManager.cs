@@ -149,7 +149,7 @@ namespace AC
 				if (GUILayout.Button ("Phonemes Editor"))
 				{
 					PhonemesWindow window = (PhonemesWindow) EditorWindow.GetWindow (typeof (PhonemesWindow));
-					window.title = "Phonemes Editor";
+					//window = (PhonemesWindow) AdvGame.SetWindowTitle (window, "Phonemes Editor");
 					window.Repaint ();
 				}
 			}

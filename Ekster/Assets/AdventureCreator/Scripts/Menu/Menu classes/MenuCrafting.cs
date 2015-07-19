@@ -561,6 +561,8 @@ namespace AC
 				return;
 			}
 
+			base.ProcessClick (_menu, _slot, _mouseState);
+
 			if (craftingType == CraftingElementType.Ingredients)
 			{
 				HandleDefaultClick (_mouseState, _slot);
@@ -569,7 +571,7 @@ namespace AC
 			{
 				ClickOutput (_menu, _mouseState);
 			}
-			
+
 			_menu.Recalculate ();
 		}
 

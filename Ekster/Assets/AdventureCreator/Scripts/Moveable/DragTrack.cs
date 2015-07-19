@@ -25,20 +25,23 @@ namespace AC
 
 		public virtual void AssignColliders (Moveable_Drag draggable)
 		{
-			draggable.maxCollider.transform.rotation = Quaternion.AngleAxis (90f, draggable.maxCollider.transform.right) * draggable.maxCollider.transform.rotation;
-			draggable.minCollider.transform.rotation = Quaternion.AngleAxis (90f, draggable.minCollider.transform.right) * draggable.minCollider.transform.rotation;
-
-			if (colliderMaterial)
+			if (draggable.minCollider != null && draggable.maxCollider != null)
 			{
-				draggable.maxCollider.material = colliderMaterial;
-				draggable.minCollider.material = colliderMaterial;
+				draggable.maxCollider.transform.rotation = Quaternion.AngleAxis (90f, draggable.maxCollider.transform.right) * draggable.maxCollider.transform.rotation;
+				draggable.minCollider.transform.rotation = Quaternion.AngleAxis (90f, draggable.minCollider.transform.right) * draggable.minCollider.transform.rotation;
+
+				if (colliderMaterial)
+				{
+					draggable.maxCollider.material = colliderMaterial;
+					draggable.minCollider.material = colliderMaterial;
+				}
+
+				draggable.maxCollider.transform.parent = this.transform;
+				draggable.minCollider.transform.parent = this.transform;
+
+				draggable.maxCollider.name = draggable.name + "_UpperLimit";
+				draggable.minCollider.name = draggable.name + "_LowerLimit";
 			}
-
-			draggable.maxCollider.transform.parent = this.transform;
-			draggable.minCollider.transform.parent = this.transform;
-
-			draggable.maxCollider.name = draggable.name + "_UpperLimit";
-			draggable.minCollider.name = draggable.name + "_LowerLimit";
 
 			LimitCollisions (draggable);
 		}

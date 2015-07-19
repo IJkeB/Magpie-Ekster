@@ -130,7 +130,12 @@ namespace AC
 
 
 		public virtual void ProcessClick (AC.Menu _menu, int _slot, MouseState _mouseState)
-		{}
+		{
+			if (clickSound != null && KickStarter.sceneSettings != null)
+			{
+				KickStarter.sceneSettings.PlayDefaultSound (clickSound, false);
+			}
+		}
 
 
 		public virtual void ProcessContinuousClick (AC.Menu _menu, MouseState _mouseState)

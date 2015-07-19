@@ -282,6 +282,7 @@ namespace AC
 				return;
 			}
 
+			base.ProcessClick (_menu, _slot, _mouseState);
 			KickStarter.playerInteraction.ClickInteractionIcon (_menu, iconID);
 		}
 		

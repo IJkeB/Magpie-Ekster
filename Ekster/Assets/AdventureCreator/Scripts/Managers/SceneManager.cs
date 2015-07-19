@@ -356,13 +356,13 @@ namespace AC
 					if (oldMainCam.GetComponent <Camera>())
 					{
 						oldMainCam.AddComponent <MainCamera>();
-
+						
 						string camPrefabfileName = assetFolder + "Automatic" + Path.DirectorySeparatorChar.ToString () + "MainCamera.prefab";
 						GameObject camPrefab = (GameObject) AssetDatabase.LoadAssetAtPath (camPrefabfileName, typeof (GameObject));
 						Texture2D prefabFadeTexture = camPrefab.GetComponent <MainCamera>().fadeTexture;
-
+						
 						oldMainCam.GetComponent <MainCamera>().Initialise (prefabFadeTexture);
-
+						
 						PutInFolder (GameObject.FindWithTag (Tags.mainCamera), "_Cameras");
 						Debug.Log ("'" + oldMainCam.name + "' has been converted to an Adventure Creator MainCamera.");
 					}
@@ -380,7 +380,7 @@ namespace AC
 			{
 				GameObject mainCamOb = AddPrefab ("Automatic", "MainCamera", false, false, false);
 				PrefabUtility.DisconnectPrefabInstance (mainCamOb);
-				PutInFolder (GameObject.FindWithTag (Tags.mainCamera), "_Cameras");
+				PutInFolder (mainCamOb, "_Cameras");
 				if (settingsManager && settingsManager.IsUnity2D ())
 				{
 					Camera.main.orthographic = true;
@@ -669,7 +669,11 @@ namespace AC
 					
 					Renderer r = Selection.activeGameObject.GetComponent <Renderer>();
 					newOb.transform.position = r.bounds.center;
-					newOb.transform.localScale = r.bounds.size;
+					Vector3 scale = r.bounds.size;
+					scale.x = Mathf.Max (scale.x, 0.01f);
+					scale.y = Mathf.Max (scale.y, 0.01f);
+					scale.z = Mathf.Max (scale.z, 0.01f);
+					newOb.transform.localScale = scale;
 				}
 				
 				Selection.activeGameObject = newOb;

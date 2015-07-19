@@ -10,7 +10,7 @@ namespace AC
 		
 		public References references;
 		
-		public static string version = "1.46";
+		public static string version = "1.46g";
 	 
 		private bool showScene = true;
 		private bool showSettings = false;
@@ -32,7 +32,7 @@ namespace AC
 			// Get existing open window or if none, make a new one:
 			AdventureCreator window = (AdventureCreator) EditorWindow.GetWindow (typeof (AdventureCreator));
 			window.GetReferences ();
-			window.title = "Game Editor";
+			AdvGame.SetWindowTitle (window, "AC Game Editor");
 		}
 		
 		

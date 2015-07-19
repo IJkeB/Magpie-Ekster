@@ -98,20 +98,16 @@ namespace AC
 			gameObject.tag = Tags.mainCamera;
 
 			hideSceneWhileLoading = true;
-			
-			if (GetComponent <Camera>())
-			{
-				_camera = GetComponent <Camera>();
-			}
-			else
-			{
-				Debug.LogError ("The MainCamera script requires a Camera component.");
-				return;
-			}
+
+			AssignOwnCamera ();
 
 			if (GetComponent <AudioListener>())
 			{
 				_audioListener = GetComponent <AudioListener>();
+			}
+			else if (_camera != null && _camera.GetComponent <AudioListener>())
+			{
+				_audioListener = _camera.GetComponent <AudioListener>();
 			}
 
 			if (this.transform.parent && this.transform.parent.name != "_Cameras")
@@ -253,11 +249,7 @@ namespace AC
 		
 		public void PrepareForBackground ()
 		{
-			if (_camera == null && GetComponent <Camera>())
-			{
-				_camera = GetComponent <Camera>();
-			}
-
+			AssignOwnCamera ();
 			_camera.clearFlags = CameraClearFlags.Depth;
 			
 			if (LayerMask.NameToLayer (KickStarter.settingsManager.backgroundImageLayer) != -1)
@@ -269,11 +261,7 @@ namespace AC
 		
 		private void RemoveBackground ()
 		{
-			if (_camera == null && GetComponent <Camera>())
-			{
-				_camera = GetComponent <Camera>();
-			}
-
+			AssignOwnCamera ();
 			_camera.clearFlags = CameraClearFlags.Skybox;
 			
 			if (LayerMask.NameToLayer (KickStarter.settingsManager.backgroundImageLayer) != -1)
@@ -591,8 +579,8 @@ namespace AC
 				isCrossfading = false;
 				alpha = 0f;
 			}
-			crossfadeTexture = null;
 			DestroyObject (crossfadeTexture);
+			crossfadeTexture = null;
 		}
 		
 		
@@ -679,10 +667,7 @@ namespace AC
 				}
 			}
 			
-			if (_camera == null && GetComponent <Camera>())
-			{
-				_camera = GetComponent <Camera>();
-			}
+			AssignOwnCamera ();
 			_camera.ResetProjectionMatrix ();
 			attachedCamera = newCamera;
 			attachedCamera.SetCameraComponent ();
@@ -1227,6 +1212,27 @@ namespace AC
 		{
 			return focalDistance;
 		}
+
+
+		private void AssignOwnCamera ()
+		{
+			if (_camera == null)
+			{
+				if (GetComponent <Camera>())
+				{
+					_camera = GetComponent <Camera>();
+				}
+				else if (GetComponentInChildren <Camera>())
+				{
+					_camera = GetComponentInChildren <Camera>();
+				}
+				else
+				{
+					Debug.LogError ("The MainCamera script requires a Camera component.");
+					return;
+				}
+			}
+		}
 		
 		
 		private void OnDestroy ()
@@ -1264,6 +1270,25 @@ namespace AC
 				_audioListener.enabled = true;
 			}
 		}
+
+
+		public void SetCameraTag (string _tag)
+		{
+			if (_camera != null)
+			{
+				_camera.gameObject.tag = _tag;
+			}
+		}
+
+
+		public void SetAudioState (bool state)
+		{
+			if (_audioListener)
+			{
+				_audioListener.enabled = state;
+			}
+		}
+
 		
 	}
 	

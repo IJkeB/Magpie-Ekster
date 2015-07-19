@@ -656,7 +656,7 @@ public class AnimEngine_SpritesUnityComplex : AnimEngine
 	{
 		if (character.talkParameter != "")
 		{
-			animator.SetBool (character.talkParameter, false);
+			animator.SetBool (character.talkParameter, character.isTalking);
 		}
 		
 		if (character.phonemeParameter != "" && character.LipSyncGameObject ())

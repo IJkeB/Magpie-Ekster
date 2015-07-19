@@ -61,12 +61,11 @@ namespace AC
 				KickStarter.mainCamera.transform.position = transform.position;
 				KickStarter.mainCamera.transform.rotation = transform.rotation;
 
-				Camera _camera = KickStarter.mainCamera.GetComponent <Camera>();
-				_camera.orthographic = GetComponent <Camera>().orthographic;
-				_camera.fieldOfView = GetComponent <Camera>().fieldOfView;
-				_camera.farClipPlane = GetComponent <Camera>().farClipPlane;
-				_camera.nearClipPlane = GetComponent <Camera>().nearClipPlane;
-				_camera.orthographicSize = GetComponent <Camera>().orthographicSize;
+				Camera.main.orthographic = GetComponent <Camera>().orthographic;
+				Camera.main.fieldOfView = GetComponent <Camera>().fieldOfView;
+				Camera.main.farClipPlane = GetComponent <Camera>().farClipPlane;
+				Camera.main.nearClipPlane = GetComponent <Camera>().nearClipPlane;
+				Camera.main.orthographicSize = GetComponent <Camera>().orthographicSize;
 			}
 		}
 

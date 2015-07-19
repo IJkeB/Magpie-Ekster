@@ -767,7 +767,15 @@ namespace AC
 				
 				if (hotspotLabel != "" && !menu.isLocked && (KickStarter.stateHandler.gameState == GameState.Normal || KickStarter.stateHandler.gameState == GameState.DialogOptions))
 				{
-					menu.TurnOn (true);
+					if (!menu.IsOn ())
+					{
+						menu.TurnOn (true);
+						if (menu.IsUnityUI ())
+						{
+							// Update position before next frame (Unity UI bug)
+							UpdateMenuPosition (menu, invertedMouse);
+						}
+					}
 				}
 				else if (KickStarter.stateHandler.gameState == GameState.Paused)
 				{
@@ -972,9 +980,8 @@ namespace AC
 									else
 									{
 										foundMouseOverInventory = true;
-										//activeInventoryBoxCentre = menu.GetSlotCentre (inventoryBox, i);
 
-										if (!KickStarter.playerInput.mouseOverInteractionMenu) // Was interactionMenuIsOn
+										if (!KickStarter.playerInput.mouseOverInteractionMenu)
 										{
 											InvItem newHoverItem = inventoryBox.GetItem (i);
 											KickStarter.runtimeInventory.hoverItem = newHoverItem;
@@ -1321,7 +1328,11 @@ namespace AC
 
 			if (_mouseState == MouseState.LetGo)
 			{
-				if (KickStarter.settingsManager.inputMethod == InputMethod.TouchScreen && !KickStarter.settingsManager.CanDragCursor () && KickStarter.runtimeInventory.selectedItem == null && !(_element is MenuInventoryBox) && !(_element is MenuCrafting))
+				if (_menu.appearType == AppearType.OnInteraction && KickStarter.settingsManager.ReleaseClickInteractions () && !KickStarter.settingsManager.CanDragCursor () && KickStarter.runtimeInventory.selectedItem == null)
+				{
+					_mouseState = MouseState.SingleClick;
+				}
+				else if (KickStarter.settingsManager.inputMethod == InputMethod.TouchScreen && !KickStarter.settingsManager.CanDragCursor () && KickStarter.runtimeInventory.selectedItem == null && !(_element is MenuInventoryBox) && !(_element is MenuCrafting))
 				{
 					_mouseState = MouseState.SingleClick;
 				}
@@ -1334,11 +1345,6 @@ namespace AC
 			
 			if (_mouseState != MouseState.Normal)
 			{
-				if (_element.clickSound != null && KickStarter.sceneSettings != null)
-				{
-					KickStarter.sceneSettings.PlayDefaultSound (_element.clickSound, false);
-				}
-
 				_element.ProcessClick (_menu, _slot, _mouseState);
 				PlayerMenus.ResetInventoryBoxes ();
 			}

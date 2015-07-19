@@ -14,11 +14,11 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-
 namespace AC
 {
 	
 	[System.Serializable]
+	[ExecuteInEditMode]
 	public class ActionList : MonoBehaviour
 	{
 		[HideInInspector] public bool isSkippable = true;
@@ -40,6 +40,14 @@ namespace AC
 
 		private void Awake ()
 		{
+			#if UNITY_EDITOR
+			if (!Application.isPlaying)
+			{
+				CopyScriptable ();
+				return;
+			}
+			#endif
+
 			LayerHotspot = LayerMask.NameToLayer (KickStarter.settingsManager.hotspotLayer);
 			LayerOff = LayerMask.NameToLayer (KickStarter.settingsManager.deactivatedLayer);
 			
@@ -69,21 +77,6 @@ namespace AC
 		}
 		
 		
-		private void Start ()
-		{
-			/*if (!useParameters)
-			{
-				foreach (Action action in actions)
-				{
-					if (action != null)
-					{
-						action.AssignValues (null);
-					}
-				}
-			} */
-		}
-		
-		
 		public virtual void Interact ()
 		{
 			Interact (0, true);
@@ -100,7 +93,7 @@ namespace AC
 				}
 				else
 				{
-					Reset ();
+					ResetList ();
 					ResetSkips ();
 					BeginActionList (i, addToSkipQueue);
 				}
@@ -115,8 +108,7 @@ namespace AC
 				yield return new WaitForSeconds (triggerTime);
 			}
 
-			//Kill ();
-			Reset ();
+			ResetList ();
 			ResetSkips ();
 			BeginActionList (0, addToSkipQueue);
 		}
@@ -399,7 +391,7 @@ namespace AC
 		}
 		
 		
-		public void Reset ()
+		public void ResetList ()
 		{
 			isSkipping = false;
 			StopCoroutine ("PauseUntilStart");
@@ -512,6 +504,26 @@ namespace AC
 				return actions;
 			}
 			return null;
+		}
+
+
+		private void CopyScriptable ()
+		{
+			if (actions == null || actions.Count == 0)
+			{
+				return;
+			}
+
+			List<Action> newActions = new List<Action>();
+			foreach (Action action in actions)
+			{
+				if (action != null)
+				{
+					Action clonedAction = Object.Instantiate (action) as Action;
+					newActions.Add (clonedAction);
+				}
+			}
+			actions = newActions;
 		}
 
 	}

@@ -14,7 +14,7 @@ namespace AC
 		public static void Init ()
 		{
 			ActiveInputsWindow window = (ActiveInputsWindow) EditorWindow.GetWindow (typeof (ActiveInputsWindow));
-			window.title = "Active Inputs";
+			AdvGame.SetWindowTitle (window, "Active Inputs");
 			window.position = new Rect (300, 200, 450, 400);
 		}
 		

@@ -86,7 +86,7 @@ namespace AC
 				{
 					// Kill, but do isolated, to bypass setting GameState etc
 					ActionList listToRemove = activeLists[i];
-					listToRemove.Reset ();
+					listToRemove.ResetList ();
 					activeLists.RemoveAt (i);
 					i-=1;
 					
@@ -209,8 +209,8 @@ namespace AC
 				activeLists.Remove (_list);
 			}
 
-			_list.Reset ();
-			
+			_list.ResetList ();
+
 			if (_list.conversation == conversationOnEnd && _list.conversation != null)
 			{
 				if (KickStarter.stateHandler)
@@ -340,7 +340,7 @@ namespace AC
 		{
 			foreach (ActionList _list in activeLists)
 			{
-				_list.Reset ();
+				_list.ResetList ();
 				
 				if (_list is RuntimeActionList)
 				{

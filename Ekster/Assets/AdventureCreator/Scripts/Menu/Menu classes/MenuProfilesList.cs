@@ -274,8 +274,9 @@ namespace AC
 				return;
 			}
 			
-			bool isSuccess = KickStarter.options.SwitchProfileIfExists (_slot + offset, showActive);
+			base.ProcessClick (_menu, _slot, _mouseState);
 
+			bool isSuccess = KickStarter.options.SwitchProfileIfExists (_slot + offset, showActive);
 			if (isSuccess)
 			{
 				AdvGame.RunActionListAsset (actionListOnClick);

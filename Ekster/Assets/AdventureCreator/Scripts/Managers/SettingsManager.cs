@@ -68,6 +68,7 @@ namespace AC
 		public bool lockCursorOnStart = false;
 		public bool disableFreeAimWhenDragging = false;
 		public bool runConversationsWithKeys = false;
+		public bool clickUpInteractions = false;
 
 		// Inventory settings
 		public bool inventoryDragDrop = false;
@@ -260,6 +261,7 @@ namespace AC
 				
 					if (SelectInteractionMethod () == SelectInteractions.ClickingMenu)
 					{
+						clickUpInteractions = EditorGUILayout.ToggleLeft ("Trigger interaction by releasing click?", clickUpInteractions);
 						cancelInteractions = (CancelInteractions) EditorGUILayout.EnumPopup ("Close interactions with:", cancelInteractions);
 					}
 					else
@@ -1085,6 +1087,23 @@ namespace AC
 		public bool CanDragCursor ()
 		{
 			if (offsetTouchCursor && inputMethod == InputMethod.TouchScreen && movementMethod != MovementMethod.FirstPerson)
+			{
+				return true;
+			}
+			return false;
+		}
+
+
+		public bool ReleaseClickInteractions ()
+		{
+			if (inputMethod == InputMethod.TouchScreen)
+			{
+				return true;
+			}
+
+			if (interactionMethod == AC_InteractionMethod.ChooseHotspotThenInteraction &&
+				SelectInteractionMethod () == SelectInteractions.ClickingMenu &&
+			    clickUpInteractions)
 			{
 				return true;
 			}

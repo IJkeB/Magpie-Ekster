@@ -43,7 +43,7 @@ namespace AC
 			ActionListEditorWindow window = CreateWindow ();
 			window.Repaint ();
 			window.Show ();
-			window.title = "ActionList Editor";
+			AdvGame.SetWindowTitle (window, "ActionList Editor");
 			window.windowData = new ActionListEditorWindowData ();
 		}
 
@@ -93,7 +93,7 @@ namespace AC
 		{
 			scrollPosition = Vector2.zero;
 			zoom = 1f;
-			title = "ActionList Editor";
+			AdvGame.SetWindowTitle (this, "ActionList Editor");
 			windowData = _data;
 			Repaint ();
 			Show ();
@@ -355,7 +355,7 @@ namespace AC
 				showLabel = true;
 			}
 
-			if ((isAsset && windowData.targetAsset == null) || (!isAsset && windowData.target == null))
+			if ((isAsset && windowData.targetAsset == null) || (!isAsset && windowData.target == null) || (!isAsset && !windowData.target.gameObject.activeInHierarchy))
 			{
 				noList = true;
 			}
@@ -750,6 +750,13 @@ namespace AC
 				OnEnable ();
 				return;
 			}
+			if (!isAsset && !windowData.target.gameObject.activeInHierarchy)
+		    {
+				GUILayout.Space (30f);
+				EditorGUILayout.HelpBox ("Scene-based Actions can not live in prefabs - use ActionList assets instead.", MessageType.Info);
+				return;
+			}
+
 		
 			bool loseConnection = false;
 			Event e = Event.current;
@@ -856,11 +863,22 @@ namespace AC
 						GUI.skin = emptyNodeSkin;
 						_action.nodeRect.height = 21f;
 						string extraLabel = _action.SetLabel ();
-						if (extraLabel.Length > 15)
+						if (_action is ActionComment)
 						{
-							extraLabel = extraLabel.Substring (0, 15) + "..)";
+							if (extraLabel.Length > 40)
+							{
+								extraLabel = extraLabel.Substring (0, 40) + "..)";
+							}
+							label = extraLabel;
 						}
-						label += extraLabel;
+						else
+						{
+							if (extraLabel.Length > 15)
+							{
+								extraLabel = extraLabel.Substring (0, 15) + "..)";
+							}
+							label += extraLabel;
+						}
 						_action.nodeRect = GUI.Window (i, _action.nodeRect, EmptyNodeWindow, label);
 					}
 					else

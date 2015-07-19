@@ -103,7 +103,8 @@ namespace AC
 					{
 						showCursor = false;
 					}
-					else if ((KickStarter.stateHandler.gameState == GameState.Normal || KickStarter.stateHandler.gameState == GameState.DialogOptions) && (KickStarter.cursorManager.cursorDisplay == CursorDisplay.Always))
+					//else if ((KickStarter.stateHandler.gameState == GameState.Normal || KickStarter.stateHandler.gameState == GameState.DialogOptions) && (KickStarter.cursorManager.cursorDisplay == CursorDisplay.Always))
+					else if (KickStarter.stateHandler.gameState == GameState.Normal || KickStarter.stateHandler.gameState == GameState.DialogOptions)
 					{
 						showCursor = true;
 					}
@@ -149,202 +150,204 @@ namespace AC
 		
 		public void DrawCursor ()
 		{
-			if (KickStarter.playerInput && KickStarter.playerInteraction && KickStarter.stateHandler && KickStarter.settingsManager && KickStarter.cursorManager && KickStarter.runtimeInventory && showCursor)
+			if (!showCursor)
 			{
-				if (KickStarter.playerInput.IsCursorLocked () && KickStarter.settingsManager.hideLockedCursor)
+				return;
+			}
+
+			if (KickStarter.playerInput.IsCursorLocked () && KickStarter.settingsManager.hideLockedCursor)
+			{
+				canShowHardwareCursor = false;
+				return;
+			}
+			
+			GUI.depth = -1;
+			canShowHardwareCursor = true;
+			
+			if (KickStarter.runtimeInventory.selectedItem != null)
+			{
+				// Cursor becomes selected inventory
+				selectedCursor = -2;
+				canShowHardwareCursor = false;
+			}
+			else if (KickStarter.settingsManager.interactionMethod != AC_InteractionMethod.ChooseInteractionThenHotspot)
+			{
+				if (KickStarter.settingsManager.interactionMethod == AC_InteractionMethod.ContextSensitive && KickStarter.cursorManager.allowInteractionCursorForInventory && KickStarter.runtimeInventory.hoverItem != null)
 				{
-					canShowHardwareCursor = false;
+					ShowContextIcons (KickStarter.runtimeInventory.hoverItem);
 					return;
 				}
-				
-				GUI.depth = -1;
-				canShowHardwareCursor = true;
-				
-				if (KickStarter.runtimeInventory.selectedItem != null)
+				else if (KickStarter.playerInteraction.GetActiveHotspot () != null && KickStarter.stateHandler.gameState == GameState.Normal && (KickStarter.playerInteraction.GetActiveHotspot ().HasContextUse () || KickStarter.playerInteraction.GetActiveHotspot ().HasContextLook ()))
 				{
-					// Cursor becomes selected inventory
-					selectedCursor = -2;
-					canShowHardwareCursor = false;
-				}
-				else if (KickStarter.settingsManager.interactionMethod != AC_InteractionMethod.ChooseInteractionThenHotspot)
-				{
-					if (KickStarter.settingsManager.interactionMethod == AC_InteractionMethod.ContextSensitive && KickStarter.cursorManager.allowInteractionCursorForInventory && KickStarter.runtimeInventory.hoverItem != null)
+					selectedCursor = 0;
+					
+					if (KickStarter.settingsManager.interactionMethod == AC_InteractionMethod.ContextSensitive)
 					{
-						ShowContextIcons (KickStarter.runtimeInventory.hoverItem);
-						return;
-					}
-					else if (KickStarter.playerInteraction.GetActiveHotspot () != null && KickStarter.stateHandler.gameState == GameState.Normal && (KickStarter.playerInteraction.GetActiveHotspot ().HasContextUse () || KickStarter.playerInteraction.GetActiveHotspot ().HasContextLook ()))
-					{
-						selectedCursor = 0;
-						
-						if (KickStarter.settingsManager.interactionMethod == AC_InteractionMethod.ContextSensitive)
+						if (KickStarter.cursorManager.allowInteractionCursor)
 						{
-							if (KickStarter.cursorManager.allowInteractionCursor)
-							{
-								canShowHardwareCursor = false;
-								ShowContextIcons ();
-							}
-							else if (KickStarter.cursorManager.mouseOverIcon.texture != null)
-							{
-								DrawIcon (KickStarter.cursorManager.mouseOverIcon, false);
-							}
-							else
-							{
-								DrawMainCursor ();
-							}
+							canShowHardwareCursor = false;
+							ShowContextIcons ();
+						}
+						else if (KickStarter.cursorManager.mouseOverIcon.texture != null)
+						{
+							DrawIcon (KickStarter.cursorManager.mouseOverIcon, false);
+						}
+						else
+						{
+							DrawMainCursor ();
+						}
+					}
+				}
+				else
+				{
+					selectedCursor = -1;
+				}
+			}
+			else if (KickStarter.settingsManager.interactionMethod == AC_InteractionMethod.ChooseInteractionThenHotspot)
+			{
+				if (KickStarter.stateHandler.gameState == GameState.DialogOptions || KickStarter.stateHandler.gameState == GameState.Paused)
+				{
+					selectedCursor = -1;
+				}
+				else if (KickStarter.playerInteraction.GetActiveHotspot () != null && !KickStarter.playerInteraction.GetActiveHotspot ().IsSingleInteraction () && !KickStarter.cursorManager.allowInteractionCursor && KickStarter.cursorManager.mouseOverIcon.texture != null)
+				{
+					DrawIcon (KickStarter.cursorManager.mouseOverIcon, false);
+					return;
+				}
+			}
+			
+			
+			if (KickStarter.stateHandler.gameState == GameState.Cutscene && KickStarter.cursorManager.waitIcon.texture != null)
+			{
+				// Wait
+				DrawIcon (KickStarter.cursorManager.waitIcon, false);
+			}
+			else if (selectedCursor == -2 && KickStarter.runtimeInventory.selectedItem != null)
+			{
+				// Inventory
+				canShowHardwareCursor = false;
+				
+				if (KickStarter.settingsManager.SelectInteractionMethod () == SelectInteractions.CyclingCursorAndClickingHotspot && KickStarter.settingsManager.cycleInventoryCursors)
+				{
+					if (KickStarter.playerInteraction.GetActiveHotspot () == null && KickStarter.runtimeInventory.hoverItem == null)
+					{
+						if (KickStarter.playerInteraction.GetInteractionIndex () >= 0)
+						{
+							// Item was selected due to cycling icons
+							KickStarter.playerInteraction.ResetInteractionIndex ();
+							KickStarter.runtimeInventory.SetNull ();
+							return;
+						}
+					}
+				}
+
+				if (KickStarter.settingsManager.inventoryActiveEffect != InventoryActiveEffect.None && KickStarter.runtimeInventory.selectedItem.activeTex && KickStarter.playerMenus.GetHotspotLabel () != "" &&
+				    (KickStarter.settingsManager.activeWhenUnhandled || KickStarter.playerInteraction.DoesHotspotHaveInventoryInteraction () || (KickStarter.runtimeInventory.hoverItem != null && KickStarter.runtimeInventory.hoverItem.DoesHaveInventoryInteraction (KickStarter.runtimeInventory.selectedItem))))
+				{
+					if (KickStarter.cursorManager.inventoryHandling == InventoryHandling.ChangeHotspotLabel)
+					{
+						DrawMainCursor ();
+					}
+					else
+					{
+						DrawActiveInventoryCursor ();
+					}
+				}
+				else if (KickStarter.runtimeInventory.selectedItem.tex)
+				{
+					if (KickStarter.cursorManager.inventoryHandling == InventoryHandling.ChangeHotspotLabel)
+					{
+						DrawMainCursor ();
+					}
+					else
+					{
+						DrawIcon (AdvGame.GUIBox (KickStarter.playerInput.GetMousePosition (), KickStarter.cursorManager.inventoryCursorSize), KickStarter.runtimeInventory.selectedItem.tex);
+						pulseDirection = 0;
+					}
+				}
+				else
+				{
+					selectedCursor = -1;
+					KickStarter.runtimeInventory.SetNull ();
+					pulseDirection = 0;
+				}
+				
+				if (KickStarter.runtimeInventory.selectedItem != null && KickStarter.runtimeInventory.selectedItem.canCarryMultiple)
+				{
+					KickStarter.runtimeInventory.DrawInventoryCount (KickStarter.playerInput.GetMousePosition (), KickStarter.cursorManager.inventoryCursorSize, KickStarter.runtimeInventory.selectedItem.count);
+				}
+			}
+			else if (KickStarter.settingsManager.SelectInteractionMethod () == SelectInteractions.CyclingCursorAndClickingHotspot)
+			{
+				ShowCycleCursor (KickStarter.playerInteraction.GetActiveUseButtonIconID ());
+			}
+			else if (KickStarter.cursorManager.allowMainCursor || KickStarter.settingsManager.inputMethod == InputMethod.KeyboardOrController)
+			{
+				// Pointer
+				pulseDirection = 0;
+
+				if (KickStarter.settingsManager.interactionMethod == AC_InteractionMethod.ChooseHotspotThenInteraction)
+				{
+					if (KickStarter.runtimeInventory.hoverItem == null && KickStarter.playerInteraction.GetActiveHotspot () != null && (!KickStarter.playerInput.interactionMenuIsOn || KickStarter.settingsManager.SelectInteractionMethod () == SelectInteractions.CyclingMenuAndClickingHotspot))
+					{
+						if (KickStarter.playerInteraction.GetActiveHotspot ().IsSingleInteraction ())
+						{
+							ShowContextIcons ();
+						}
+						else if (KickStarter.cursorManager.mouseOverIcon.texture != null)
+						{
+							DrawIcon (KickStarter.cursorManager.mouseOverIcon, false);
+						}
+						else
+						{
+							DrawMainCursor ();
 						}
 					}
 					else
+					{
+						DrawMainCursor ();
+					}
+				}
+				else if (KickStarter.settingsManager.interactionMethod == AC_InteractionMethod.ContextSensitive)
+				{
+					if (selectedCursor == -1)
+					{
+						DrawMainCursor ();
+					}
+					else if (selectedCursor == -2 && KickStarter.runtimeInventory.selectedItem == null)
 					{
 						selectedCursor = -1;
 					}
 				}
 				else if (KickStarter.settingsManager.interactionMethod == AC_InteractionMethod.ChooseInteractionThenHotspot)
 				{
-					if (KickStarter.stateHandler.gameState == GameState.DialogOptions || KickStarter.stateHandler.gameState == GameState.Paused)
+					if (KickStarter.playerInteraction.GetActiveHotspot () != null && KickStarter.playerInteraction.GetActiveHotspot ().IsSingleInteraction ())
 					{
 						selectedCursor = -1;
+						ShowContextIcons ();
 					}
-					else if (KickStarter.playerInteraction.GetActiveHotspot () != null && !KickStarter.playerInteraction.GetActiveHotspot ().IsSingleInteraction () && !KickStarter.cursorManager.allowInteractionCursor && KickStarter.cursorManager.mouseOverIcon.texture != null)
+					else if (selectedCursor >= 0)
 					{
-						DrawIcon (KickStarter.cursorManager.mouseOverIcon, false);
-						return;
-					}
-				}
-				
-				
-				if (KickStarter.stateHandler.gameState == GameState.Cutscene && KickStarter.cursorManager.waitIcon.texture != null)
-				{
-					// Wait
-					DrawIcon (KickStarter.cursorManager.waitIcon, false);
-				}
-				else if (selectedCursor == -2 && KickStarter.runtimeInventory.selectedItem != null)
-				{
-					// Inventory
-					canShowHardwareCursor = false;
-					
-					if (KickStarter.settingsManager.SelectInteractionMethod () == SelectInteractions.CyclingCursorAndClickingHotspot && KickStarter.settingsManager.cycleInventoryCursors)
-					{
-						if (KickStarter.playerInteraction.GetActiveHotspot () == null && KickStarter.runtimeInventory.hoverItem == null)
+						if (KickStarter.cursorManager.allowInteractionCursor)
 						{
-							if (KickStarter.playerInteraction.GetInteractionIndex () >= 0)
-							{
-								// Item was selected due to cycling icons
-								KickStarter.playerInteraction.ResetInteractionIndex ();
-								KickStarter.runtimeInventory.SetNull ();
-								return;
-							}
-						}
-					}
-
-					if (KickStarter.settingsManager.inventoryActiveEffect != InventoryActiveEffect.None && KickStarter.runtimeInventory.selectedItem.activeTex && KickStarter.playerMenus.GetHotspotLabel () != "" &&
-					    (KickStarter.settingsManager.activeWhenUnhandled || KickStarter.playerInteraction.DoesHotspotHaveInventoryInteraction () || (KickStarter.runtimeInventory.hoverItem != null && KickStarter.runtimeInventory.hoverItem.DoesHaveInventoryInteraction (KickStarter.runtimeInventory.selectedItem))))
-					{
-						if (KickStarter.cursorManager.inventoryHandling == InventoryHandling.ChangeHotspotLabel)
-						{
-							DrawMainCursor ();
-						}
-						else
-						{
-							DrawActiveInventoryCursor ();
-						}
-					}
-					else if (KickStarter.runtimeInventory.selectedItem.tex)
-					{
-						if (KickStarter.cursorManager.inventoryHandling == InventoryHandling.ChangeHotspotLabel)
-						{
-							DrawMainCursor ();
-						}
-						else
-						{
-							DrawIcon (AdvGame.GUIBox (KickStarter.playerInput.GetMousePosition (), KickStarter.cursorManager.inventoryCursorSize), KickStarter.runtimeInventory.selectedItem.tex);
+							//	Custom icon
 							pulseDirection = 0;
-						}
-					}
-					else
-					{
-						selectedCursor = -1;
-						KickStarter.runtimeInventory.SetNull ();
-						pulseDirection = 0;
-					}
-					
-					if (KickStarter.runtimeInventory.selectedItem != null && KickStarter.runtimeInventory.selectedItem.canCarryMultiple)
-					{
-						KickStarter.runtimeInventory.DrawInventoryCount (KickStarter.playerInput.GetMousePosition (), KickStarter.cursorManager.inventoryCursorSize, KickStarter.runtimeInventory.selectedItem.count);
-					}
-				}
-				else if (KickStarter.settingsManager.SelectInteractionMethod () == SelectInteractions.CyclingCursorAndClickingHotspot)
-				{
-					ShowCycleCursor (KickStarter.playerInteraction.GetActiveUseButtonIconID ());
-				}
-				else if (KickStarter.cursorManager.allowMainCursor || KickStarter.settingsManager.inputMethod == InputMethod.KeyboardOrController)
-				{
-					// Pointer
-					pulseDirection = 0;
-
-					if (KickStarter.settingsManager.interactionMethod == AC_InteractionMethod.ChooseHotspotThenInteraction)
-					{
-						if (KickStarter.runtimeInventory.hoverItem == null && KickStarter.playerInteraction.GetActiveHotspot () != null && (!KickStarter.playerInput.interactionMenuIsOn || KickStarter.settingsManager.SelectInteractionMethod () == SelectInteractions.CyclingMenuAndClickingHotspot))
-						{
-							if (KickStarter.playerInteraction.GetActiveHotspot ().IsSingleInteraction ())
-							{
-								ShowContextIcons ();
-							}
-							else if (KickStarter.cursorManager.mouseOverIcon.texture != null)
-							{
-								DrawIcon (KickStarter.cursorManager.mouseOverIcon, false);
-							}
-							else
-							{
-								DrawMainCursor ();
-							}
+							canShowHardwareCursor = false;
+							
+							DrawIcon (KickStarter.cursorManager.cursorIcons [selectedCursor], false);
 						}
 						else
 						{
 							DrawMainCursor ();
 						}
 					}
-					else if (KickStarter.settingsManager.interactionMethod == AC_InteractionMethod.ContextSensitive)
+					else if (selectedCursor == -1)
 					{
-						if (selectedCursor == -1)
-						{
-							DrawMainCursor ();
-						}
-						else if (selectedCursor == -2 && KickStarter.runtimeInventory.selectedItem == null)
-						{
-							selectedCursor = -1;
-						}
+						DrawMainCursor ();
 					}
-					else if (KickStarter.settingsManager.interactionMethod == AC_InteractionMethod.ChooseInteractionThenHotspot)
+					else if (selectedCursor == -2 && KickStarter.runtimeInventory.selectedItem == null)
 					{
-						if (KickStarter.playerInteraction.GetActiveHotspot () != null && KickStarter.playerInteraction.GetActiveHotspot ().IsSingleInteraction ())
-						{
-							selectedCursor = -1;
-							ShowContextIcons ();
-						}
-						else if (selectedCursor >= 0)
-						{
-							if (KickStarter.cursorManager.allowInteractionCursor)
-							{
-								//	Custom icon
-								pulseDirection = 0;
-								canShowHardwareCursor = false;
-								
-								DrawIcon (KickStarter.cursorManager.cursorIcons [selectedCursor], false);
-							}
-							else
-							{
-								DrawMainCursor ();
-							}
-						}
-						else if (selectedCursor == -1)
-						{
-							DrawMainCursor ();
-						}
-						else if (selectedCursor == -2 && KickStarter.runtimeInventory.selectedItem == null)
-						{
-							selectedCursor = -1;
-						}
+						selectedCursor = -1;
 					}
 				}
 			}
@@ -353,6 +356,26 @@ namespace AC
 		
 		private void DrawMainCursor ()
 		{
+			if (!showCursor)
+			{
+				return;
+			}
+
+			if (KickStarter.cursorManager.cursorDisplay == CursorDisplay.Never)
+			{
+				return;
+			}
+			
+			if (KickStarter.stateHandler.gameState != GameState.Paused && KickStarter.cursorManager.cursorDisplay == CursorDisplay.OnlyWhenPaused)
+			{
+				return;
+			}
+			
+			if (KickStarter.stateHandler.gameState == GameState.Cutscene)
+			{
+				return;
+			}
+
 			bool showWalkCursor = false;
 			int elementOverCursorID = KickStarter.playerMenus.GetElementOverCursorID ();
 

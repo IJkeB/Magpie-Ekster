@@ -170,7 +170,7 @@ namespace AC
 				{
 					// Don't do anything if the MainCamera has nothing else to do
 					fpCamera.tag = Tags.mainCamera;
-					KickStarter.mainCamera.tag = Tags.untagged;
+					KickStarter.mainCamera.SetCameraTag (Tags.untagged);
 					return;
 				}
 
@@ -181,17 +181,17 @@ namespace AC
 				}
 
 				fpCamera.GetComponent <AudioListener>().enabled = state;
-				KickStarter.mainCamera.GetComponent <AudioListener>().enabled = !state;
+				KickStarter.mainCamera.SetAudioState (!state);
 
 				if (state)
 				{
 					fpCamera.tag = Tags.mainCamera;
-					KickStarter.mainCamera.tag = Tags.untagged;
+					KickStarter.mainCamera.SetCameraTag (Tags.untagged);
 				}
 				else
 				{
 					fpCamera.tag = Tags.untagged;
-					KickStarter.mainCamera.tag = Tags.mainCamera;
+					KickStarter.mainCamera.SetCameraTag (Tags.mainCamera);
 				}
 			}
 			#else

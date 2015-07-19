@@ -295,6 +295,7 @@ namespace AC
 		{
 			if (_mouseState == MouseState.SingleClick)
 			{
+				base.ProcessClick (_menu, _slot, _mouseState);
 				StartDrag (_menu);
 				KickStarter.playerInput.activeDragElement = this;
 			}

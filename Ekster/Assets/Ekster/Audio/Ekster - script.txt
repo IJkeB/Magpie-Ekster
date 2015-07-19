@@ -1,0 +1,71 @@
+Script file created 15:56 19 July, 2015
+
+Scene: Assets/Ekster/Scenes/Ekster1.unity
+
+Character: Player
+Filename: Player0
+"That's the title, it's also my name."
+
+Character: Player
+Filename: Player1
+"It just disappeared."
+
+Character: Player
+Filename: Player2
+"I can't do anything with that, but if you right-click and select the look icon I can tell you what I see."
+
+Character: Player
+Filename: Player3
+"There is smoke coming from the chimney, they must be home."
+
+Character: Player
+Filename: Player4
+"I can't go there in this demo."
+
+Character: Player
+Filename: Player5
+"That's the farm. There are a lot of crows there."
+
+Character: Player
+Filename: Player6
+"Huh? There is corn in this glass."
+
+Character: Kraai
+Filename: Kraai7
+"asdfasdfasdfasdfadsfasd"
+
+Character: Kraai
+Filename: Kraai8
+"Please let me walk."
+
+Character: Player
+Filename: Player9
+"Hi there, sweetheart."
+
+Character: FatTony
+Filename: FatTony10
+"Oh. You again. Didn't I tell you to leave me alone?"
+
+Character: Player
+Filename: Player11
+"You loved me. I thought we had something."
+
+Character: FatTony
+Filename: FatTony12
+"You don't talk to me like that. We're done. "
+
+Character: Player
+Filename: Player13
+"What can I do to make you like me again? I'll do anything!"
+
+Character: FatTony
+Filename: FatTony14
+"Hmm.. Well, there's a crow that owns a nice item. Get it for me."
+
+Character: Player
+Filename: Player15
+"Ok. If that will make you love me again, I'll get it."
+
+Character: FatTony
+Filename: FatTony16
+"You better."

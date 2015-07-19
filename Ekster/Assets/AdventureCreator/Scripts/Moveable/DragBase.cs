@@ -219,7 +219,7 @@ namespace AC
 
 		public bool IsCloseToCamera (float maxDistance)
 		{
-			if ((GetGrabPosition () - KickStarter.mainCamera.transform.position).magnitude < maxDistance)
+			if ((GetGrabPosition () - Camera.main.transform.position).magnitude < maxDistance)
 			{
 				return true;
 			}

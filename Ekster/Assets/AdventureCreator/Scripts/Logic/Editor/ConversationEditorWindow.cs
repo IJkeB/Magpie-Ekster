@@ -27,7 +27,7 @@ namespace AC
 		{
 			ConversationEditorWindow window = (ConversationEditorWindow) EditorWindow.GetWindow (typeof (ConversationEditorWindow));
 			window.Repaint ();
-			window.title = "Conversation Editor";
+			AdvGame.SetWindowTitle (window, "Conversation Editor");
 		}
 
 		

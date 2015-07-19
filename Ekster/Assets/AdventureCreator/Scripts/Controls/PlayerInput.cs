@@ -1327,8 +1327,9 @@ namespace AC
 					}
 				}
 			}
-			else if ((KickStarter.settingsManager.movementMethod == MovementMethod.Drag || KickStarter.settingsManager.movementMethod == MovementMethod.StraightToCursor || (KickStarter.settingsManager.movementMethod != MovementMethod.PointAndClick && KickStarter.settingsManager.inputMethod == InputMethod.TouchScreen))
-			         && KickStarter.stateHandler.gameState == GameState.Normal)
+			else if ((KickStarter.settingsManager.movementMethod == MovementMethod.Drag || KickStarter.settingsManager.movementMethod == MovementMethod.StraightToCursor ||
+			          (KickStarter.settingsManager.movementMethod != MovementMethod.PointAndClick && KickStarter.settingsManager.inputMethod == InputMethod.TouchScreen))
+			         && KickStarter.settingsManager.movementMethod != MovementMethod.None && KickStarter.stateHandler.gameState == GameState.Normal)
 			{
 				if (!mouseOverMenu && !interactionMenuIsOn)
 				{
@@ -1366,7 +1367,7 @@ namespace AC
 			{
 				LetGo (false);
 			}
-			
+
 			if (mouseState == MouseState.HeldDown && dragState == DragState.None)
 			{
 				Grab ();
@@ -1441,7 +1442,7 @@ namespace AC
 						dragObject = hit.transform.GetComponent <DragBase>();
 						dragObject.Grab (hit.point);
 						lastMousePosition = mousePosition;
-						lastCameraPosition = KickStarter.mainCamera.transform.position;
+						lastCameraPosition = Camera.main.transform.position;
 					}
 				}
 
@@ -1458,23 +1459,23 @@ namespace AC
 			// Convert to a 3D force
 			if (dragObject.invertInput)
 			{
-				dragForce = (-KickStarter.mainCamera.transform.right * deltaDragMouse.x) + (-KickStarter.mainCamera.transform.up * deltaDragMouse.y);
+				dragForce = (-Camera.main.transform.right * deltaDragMouse.x) + (-Camera.main.transform.up * deltaDragMouse.y);
 			}
 			else
 			{
-				dragForce = (KickStarter.mainCamera.transform.right * deltaDragMouse.x) + (KickStarter.mainCamera.transform.up * deltaDragMouse.y);
+				dragForce = (Camera.main.transform.right * deltaDragMouse.x) + (Camera.main.transform.up * deltaDragMouse.y);
 			}
 			
 			// Scale force with distance to camera, to lessen effects when close
-			float distanceToCamera = (KickStarter.mainCamera.transform.position - dragObject.transform.position).magnitude;
+			float distanceToCamera = (Camera.main.transform.position - dragObject.transform.position).magnitude;
 			
 			// Incoporate camera movement
-			Vector3 deltaCamera = KickStarter.mainCamera.transform.position - lastCameraPosition;
+			Vector3 deltaCamera = Camera.main.transform.position - lastCameraPosition;
 			dragForce += deltaCamera * cameraInfluence;
 			
 			dragObject.ApplyDragForce (dragForce, mousePosition, distanceToCamera);
 			
-			lastCameraPosition = KickStarter.mainCamera.transform.position;
+			lastCameraPosition = Camera.main.transform.position;
 		}
 		
 		

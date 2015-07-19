@@ -509,7 +509,17 @@ namespace AC
 			copiedActions.Clear ();
 			copiedActions = tempList;
 		}
-		
+
+
+		public static void SetWindowTitle <T> (T window, string label) where T : EditorWindow
+		{
+			#if UNITY_5_1 || UNITY_5_2
+			window.titleContent.text = label;
+			#else
+			window.title = label;
+			#endif
+		}
+
 		#endif
 		
 		public static Vector3 GetScreenDirection (Vector3 originWorldPosition, Vector3 targetWorldPosition)
@@ -953,7 +963,7 @@ namespace AC
 			
 			style = backupStyle;
 		}
-		
+
 	}
 	
 }	

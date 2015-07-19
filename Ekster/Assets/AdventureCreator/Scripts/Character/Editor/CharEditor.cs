@@ -73,7 +73,7 @@ namespace AC
 			_target.runSound = (AudioClip) EditorGUILayout.ObjectField ("Run sound:", _target.runSound, typeof (AudioClip), false);
 			if (AdvGame.GetReferences ().speechManager != null && AdvGame.GetReferences ().speechManager.scrollSubtitles)
 			{
-				_target.textScrollClip = (AudioClip) EditorGUILayout.ObjectField ("", _target.textScrollClip, typeof (AudioClip), false);
+				_target.textScrollClip = (AudioClip) EditorGUILayout.ObjectField ("Text scroll override:", _target.textScrollClip, typeof (AudioClip), false);
 			}
 			_target.soundChild = (Sound) EditorGUILayout.ObjectField ("Sound child:", _target.soundChild, typeof (Sound), true);
 			EditorGUILayout.EndVertical ();

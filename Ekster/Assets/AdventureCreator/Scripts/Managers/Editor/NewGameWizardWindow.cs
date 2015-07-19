@@ -39,7 +39,7 @@ namespace AC
 		{
 			NewGameWizardWindow window = (NewGameWizardWindow) EditorWindow.GetWindow (typeof (NewGameWizardWindow));
 			window.GetReferences ();
-			window.title = "New Game Wizard";
+			AdvGame.SetWindowTitle (window, "New Game Wizard");
 			window.position = new Rect (300, 200, 350, 300);
 		}
 		

@@ -417,8 +417,8 @@ namespace AC
 					{
 						if (KickStarter.settingsManager.directMovementPerspective && KickStarter.settingsManager.cameraPerspective == CameraPerspective.ThreeD)
 						{
-							Vector3 forwardVector = (KickStarter.player.transform.position - KickStarter.mainCamera.transform.position).normalized;
-							Vector3 rightVector = -Vector3.Cross (forwardVector, KickStarter.mainCamera.transform.up);
+							Vector3 forwardVector = (KickStarter.player.transform.position - Camera.main.transform.position).normalized;
+							Vector3 rightVector = -Vector3.Cross (forwardVector, Camera.main.transform.up);
 							moveDirectionInput = (KickStarter.playerInput.moveKeys.y * forwardVector) + (KickStarter.playerInput.moveKeys.x * rightVector);
 						}
 						else

@@ -283,6 +283,7 @@ namespace AC
 
 		public override void ProcessClick (AC.Menu _menu, int _slot, MouseState _mouseState)
 		{
+			base.ProcessClick (_menu, _slot, _mouseState);
 			KickStarter.playerMenus.SelectInputBox (this);
 		}
 

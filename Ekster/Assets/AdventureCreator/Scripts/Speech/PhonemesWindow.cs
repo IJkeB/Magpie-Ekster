@@ -12,11 +12,11 @@ namespace AC
 
 		private SpeechManager speechManager;
 
-		//[MenuItem ("Adventure Creator/Editors/Phonemes Editor")]
+
 		public static void Init ()
 		{
 			PhonemesWindow window = (PhonemesWindow) EditorWindow.GetWindow (typeof (PhonemesWindow));
-			window.title = "Phonemes Editor";
+			AdvGame.SetWindowTitle (window, "Phonemes Editor");
 			window.position = new Rect (300, 200, 450, 400);
 		}
 

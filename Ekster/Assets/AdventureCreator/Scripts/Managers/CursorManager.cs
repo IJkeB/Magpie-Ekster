@@ -85,10 +85,13 @@ namespace AC
 			EditorGUILayout.BeginVertical ("Button");
 			EditorGUILayout.LabelField ("Main cursor", EditorStyles.boldLabel);
 			cursorDisplay = (CursorDisplay) EditorGUILayout.EnumPopup ("Display cursor:", cursorDisplay);
-			allowMainCursor = EditorGUILayout.Toggle ("Replace mouse cursor?", allowMainCursor);
-			if (allowMainCursor || (settingsManager && settingsManager.inputMethod == InputMethod.KeyboardOrController))
+			if (cursorDisplay != CursorDisplay.Never)
 			{
-				IconBaseGUI ("Main cursor:", pointerIcon);
+				allowMainCursor = EditorGUILayout.Toggle ("Replace mouse cursor?", allowMainCursor);
+				if (allowMainCursor || (settingsManager && settingsManager.inputMethod == InputMethod.KeyboardOrController))
+				{
+					IconBaseGUI ("Main cursor:", pointerIcon);
+				}
 			}
 			EditorGUILayout.EndVertical ();
 			

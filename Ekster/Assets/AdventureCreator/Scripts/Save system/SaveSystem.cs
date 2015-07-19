@@ -755,7 +755,7 @@ namespace AC
 		
 		public bool SaveSaveGame (int saveID, bool overwriteLabel = true, string newLabel = "")
 		{
-			if (GetNumSaves () >= KickStarter.settingsManager.maxSaves)
+			if (GetNumSaves () >= KickStarter.settingsManager.maxSaves && !DoesSaveExist (saveID))
 			{
 				Debug.LogWarning ("Cannot save - maximum number of save files has already been reached.");
 				return false;

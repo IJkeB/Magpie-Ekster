@@ -591,6 +591,11 @@ namespace AC
 				}
 				else
 				{
+					if (GameObject.FindObjectOfType <Player>() && GameObject.FindObjectOfType <Player>().tag == Tags.player)
+					{
+						playerPrefab = GameObject.FindObjectOfType <Player>().GetComponent <Player>();
+						return playerPrefab;
+					}
 					if (GameObject.FindWithTag (Tags.player) && GameObject.FindWithTag (Tags.player).GetComponent <Player>())
 					{
 						playerPrefab = GameObject.FindWithTag (Tags.player).GetComponent <Player>();
@@ -858,7 +863,8 @@ namespace AC
 			}
 			else
 			{
-				if (GameObject.FindWithTag (Tags.mainCamera).GetComponent <MainCamera>() == null)
+				if (GameObject.FindWithTag (Tags.mainCamera).GetComponent <MainCamera>() == null &&
+				    GameObject.FindWithTag (Tags.mainCamera).GetComponentInParent <MainCamera>() == null)
 				{
 					Debug.LogError ("MainCamera has no MainCamera component.");
 				}

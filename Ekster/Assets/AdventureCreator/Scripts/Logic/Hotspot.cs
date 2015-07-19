@@ -266,9 +266,15 @@ namespace AC
 				}
 			}
 		}
+
+
+		public void TurnOn ()
+		{
+			TurnOn (true);
+		}
 		
 		
-		public void TurnOn (bool manualSet = true)
+		public void TurnOn (bool manualSet)
 		{
 			gameObject.layer = LayerMask.NameToLayer (KickStarter.settingsManager.hotspotLayer);
 
@@ -278,9 +284,15 @@ namespace AC
 				LimitToCamera (KickStarter.mainCamera.attachedCamera);
 			}
 		}
+
+
+		public void TurnOff ()
+		{
+			TurnOff (true);
+		}
 		
 		
-		public void TurnOff (bool manualSet = true)
+		public void TurnOff (bool manualSet)
 		{
 			gameObject.layer = LayerMask.NameToLayer (KickStarter.settingsManager.deactivatedLayer);
 

@@ -268,6 +268,7 @@ namespace AC
 				return;
 			}
 
+			base.ProcessClick (_menu, _slot, _mouseState);
 			if (uiToggle != null)
 			{
 				isOn = uiToggle.isOn;

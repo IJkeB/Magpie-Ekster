@@ -64,7 +64,12 @@ namespace AC
 				{
 					return;
 				}
-				
+
+				if (KickStarter.playerInput.mouseState == MouseState.LetGo && !KickStarter.playerInput.mouseOverInteractionMenu && KickStarter.settingsManager.ReleaseClickInteractions ())
+				{
+					KickStarter.playerMenus.SetInteractionMenus (false);
+				}
+
 				if (!KickStarter.playerInput.mouseOverMenu && Camera.main && !KickStarter.playerInput.ActiveArrowsDisablingHotspots () &&
 				    KickStarter.mainCamera.IsPointInCamera (KickStarter.playerInput.GetMousePosition ()))
 				{
@@ -74,7 +79,6 @@ namespace AC
 						{
 							ContextSensitiveClick ();
 						}
-						//else// if (!KickStarter.playerInput.interactionMenuIsOn || KickStarter.settingsManager.SelectInteractionMethod () == SelectInteractions.CyclingMenuAndClickingHotspot)
 						else if (!KickStarter.playerInput.mouseOverInteractionMenu)
 						{
 							ChooseHotspotThenInteractionClick ();
@@ -255,7 +259,7 @@ namespace AC
 					ContextSensitiveClick ();
 					return;
 				}
-				
+
 				if (KickStarter.playerInput.mouseState == MouseState.HeldDown && KickStarter.playerInput.dragState == DragState.Player)
 				{
 					// Disable hotspots while dragging player
@@ -282,7 +286,7 @@ namespace AC
 						hotspot = newHotspot;
 						hotspot.Select ();
 					}
-					
+
 					if (hotspot)
 					{
 						if (KickStarter.playerInput.mouseState == MouseState.SingleClick ||

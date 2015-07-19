@@ -447,8 +447,9 @@ namespace AC
 				return;
 			}
 
-			bool isSuccess = true;
+			base.ProcessClick (_menu, _slot, _mouseState);
 
+			bool isSuccess = true;
 			if (saveListType == AC_SaveListType.Save && autoHandle)
 			{
 				if (newSaveSlot && _slot == (numSlots - 1))

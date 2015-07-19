@@ -464,6 +464,16 @@ namespace AC
 			}
 			return 0;
 		}
+
+
+		public static float GetSFXVolume ()
+		{
+			if (Application.isPlaying && optionsData != null)
+			{
+				return optionsData.sfxVolume;
+			}
+			return 1f;
+		}
 		
 		
 		private void CustomSaveOptionsHook ()
